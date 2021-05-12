@@ -1,4 +1,18 @@
 <?php
+
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\Convert;
+use SilverStripe\Core\Extension;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\ListboxField;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataQuery;
+use SilverStripe\ORM\Filters\SearchFilter;
+use SilverStripe\ORM\PaginatedList;
+use SilverStripe\View\Requirements;
+
 /**
  * Represents a Product category, Products can be added to many categories and they 
  * can have a ProductCategory as a parent in the site tree. 
