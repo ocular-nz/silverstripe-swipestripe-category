@@ -1,5 +1,7 @@
 <?php
 
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Extension;
@@ -12,6 +14,7 @@ use SilverStripe\ORM\DataQuery;
 use SilverStripe\ORM\Filters\SearchFilter;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\View\Requirements;
+use SwipeStripe\Product\Product;
 
 /**
  * Represents a Product category, Products can be added to many categories and they 
@@ -28,7 +31,7 @@ class ProductCategory extends Page {
 	 * @var Array
 	 */
 	private static $many_many = array(
-		'Products' => 'Product'
+		'Products' => Product::class
 	);
 
 	private static $many_many_extraFields = array(
@@ -171,8 +174,8 @@ class ProductCategory_Products extends DataObject {
 	);
 
 	private static $has_one = array(
-		'ProductCategory' => 'ProductCategory',
-		'Product' => 'Product'
+		'ProductCategory' => ProductCategory::class,
+		'Product' => Product::class
 	);
 }
 
@@ -184,7 +187,7 @@ class ProductCategory_Extension extends DataExtension {
 	 * @var Array
 	 */
 	private static $belongs_many_many = array(
-		'ProductCategories' => 'ProductCategory'
+		'ProductCategories' => ProductCategory::class
 	);
 
 	private static $searchable_fields = array(
@@ -249,7 +252,9 @@ class ProductCategory_CMSExtension extends Extension {
  * Search filter for {@link Product} categories, filtering search results for 
  * certain {@link ProductCategory}s in the CMS.
  */
-class ProductCategory_SearchFilter extends SearchFilter {
+class ProductCategory_SearchFilter extends SearchFilter implements LoggerAwareInterface {
+
+	use LoggerAwareTrait;
 
 	/**
 	 * Apply filter query SQL to a search query
@@ -290,7 +295,7 @@ class ProductCategory_SearchFilter extends SearchFilter {
 
 	protected function applyOne(DataQuery $query) {
 
-		SS_Log::log(new Exception(print_r($this->getValue(), true)), SS_Log::NOTICE);
+		$this->logger->notice(new Exception(print_r($this->getValue(), true)), []);
 
 		return;
 	}
