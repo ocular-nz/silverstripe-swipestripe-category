@@ -2,6 +2,8 @@
 
 namespace Category;
 
+use Page;
+use Page_Controller;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use SilverStripe\Control\Controller;
@@ -170,6 +172,8 @@ class ProductCategory_Controller extends Page_Controller {
 }
 
 class ProductCategory_Products extends DataObject {
+
+	private static $table_name = 'ProductCategory_Products';
 
 	private static $db = array(
 		'ProductOrder' => 'Int'
