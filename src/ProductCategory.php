@@ -1,6 +1,6 @@
 <?php
 
-namespace SwipeStripeCategory;
+namespace Category;
 
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
