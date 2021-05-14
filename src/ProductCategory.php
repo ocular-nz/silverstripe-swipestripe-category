@@ -1,5 +1,7 @@
 <?php
 
+namespace SwipeStripeCategory;
+
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use SilverStripe\Control\Controller;
