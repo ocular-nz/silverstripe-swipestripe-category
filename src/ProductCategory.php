@@ -229,7 +229,6 @@ class ProductCategory_Extension extends DataExtension {
 		$fields->addFieldToTab(
 			'Root.Main', 
 			ListboxField::create('ProductCategories', 'Categories')
-				->setMultiple(true)
 				->setSource($categories)
 				->setAttribute('data-placeholder', 'Add categories'), 
 			'Content'
@@ -266,7 +265,7 @@ class ProductCategory_SearchFilter extends SearchFilter implements LoggerAwareIn
 	 * Apply filter query SQL to a search query
 	 * 
 	 * @see SearchFilter::apply()
-	 * @return SQLQuery
+	 * @return DataQuery
 	 */
 	public function apply(DataQuery $query) {
 
@@ -301,7 +300,7 @@ class ProductCategory_SearchFilter extends SearchFilter implements LoggerAwareIn
 
 	protected function applyOne(DataQuery $query) {
 
-		$this->logger->notice(new Exception(print_r($this->getValue(), true)), []);
+		$this->logger->notice(new \Exception(print_r($this->getValue(), true)), []);
 
 		return;
 	}

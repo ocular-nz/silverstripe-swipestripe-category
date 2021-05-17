@@ -2,6 +2,6 @@
 name: SwipeStripe Category
 ---
 
-Product:
+SwipeStripe\Product\Product:
   extensions: 
-    - 'ProductCategory_Extension'
+    - 'Category\ProductCategory_Extension'

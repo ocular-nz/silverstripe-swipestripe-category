@@ -1,0 +1,7 @@
+---
+Name: category-legacy
+---
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    ProductCategory: Category\ProductCategory
+    ProductCategory_Products: Category\ProductCategory_Products
