@@ -3,7 +3,7 @@
 namespace Category;
 
 use Page;
-use Page_Controller;
+use PageController;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use SilverStripe\Control\Controller;
@@ -109,7 +109,7 @@ class ProductCategory extends Page {
 /**
  * Controller to display a ProductCategory and retrieve its Products. 
  */
-class ProductCategory_Controller extends Page_Controller {
+class ProductCategoryController extends PageController {
 	
 	/**
 	 * Set number of products per page displayed in ProductCategory pages
@@ -130,7 +130,7 @@ class ProductCategory_Controller extends Page_Controller {
 	/**
 	 * Include some CSS.
 	 * 
-	 * @see Page_Controller::init()
+	 * @see PageController::init()
 	 */
 	function init() {
 		parent::init();
@@ -141,7 +141,7 @@ class ProductCategory_Controller extends Page_Controller {
 	 * Get Products that have this ProductCategory set or have this ProductCategory as a parent in site tree.
 	 * Supports pagination.
 	 * 
-	 * @see Page_Controller::Products()
+	 * @see PageController::Products()
 	 * @return FieldList
 	 */  
 	public function Products() {
