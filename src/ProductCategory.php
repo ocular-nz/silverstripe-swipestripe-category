@@ -6,12 +6,14 @@ use Page;
 use PageController;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ListboxField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataQuery;
@@ -25,6 +27,8 @@ use SwipeStripe\Product\Product;
  * can have a ProductCategory as a parent in the site tree. 
  */
 class ProductCategory extends Page {
+
+	private static $table_name = 'ProductCategory';
 
 	private static $singular_name = 'Product Category';
 	private static $plural_name = 'Product Categories';
@@ -197,9 +201,9 @@ class ProductCategory_Extension extends DataExtension {
 	);
 
 	private static $searchable_fields = array(
-		'Category' => array(
-			'field' => 'TextField',
-			'filter' => 'ProductCategory_SearchFilter',
+		'ProductCategories' => array(
+			'field' => TextField::class,
+			'filter' => ProductCategory_SearchFilter::class,
 			'title' => 'Category'
 		)
 	);
@@ -260,6 +264,10 @@ class ProductCategory_CMSExtension extends Extension {
 class ProductCategory_SearchFilter extends SearchFilter implements LoggerAwareInterface {
 
 	use LoggerAwareTrait;
+
+	private static $dependencies = [
+		'Logger' => '%$' . LoggerInterface::class,
+	];
 
 	/**
 	 * Apply filter query SQL to a search query
