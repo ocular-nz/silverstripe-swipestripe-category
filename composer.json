@@ -14,7 +14,7 @@
 	"require":
 	{
 		"silverstripe/recipe-cms": "^5.0|^6.0",
-		"swipestripe/swipestripe": "dev-v5"
+		"swipestripe/swipestripe": "v5.x-dev"
 	},
 	"support": 
 	{
