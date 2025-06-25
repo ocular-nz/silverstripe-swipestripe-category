@@ -14,11 +14,10 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataQuery;
 use SilverStripe\ORM\Filters\SearchFilter;
-use SilverStripe\ORM\PaginatedList;
+use SilverStripe\Model\List\PaginatedList;
 use SilverStripe\View\Requirements;
 use SwipeStripe\Product\Product;
 
@@ -189,7 +188,7 @@ class ProductCategory_Products extends DataObject {
 	);
 }
 
-class ProductCategory_Extension extends DataExtension {
+class ProductCategory_Extension extends Extension {
 
 	/**
 	 * Belongs many many relations for Product

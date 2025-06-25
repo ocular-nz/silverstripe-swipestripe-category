@@ -4,7 +4,7 @@
 		
 			<% if Products.NotFirstPage %>
 				<li>
-					<a href="$Products.PrevLink"><% _t('Pagination.PREVIOUS','Prev') %></a>
+					<a href="$Products.PrevLink"><%t Pagination.PREVIOUS "Prev" %></a>
 				</li>
 			<% end_if %>
 
@@ -22,7 +22,7 @@
 			
 			<% if Products.NotLastPage %>
 				<li>
-					<a href="$Products.NextLink"><% _t('Pagination.NEXT','Next') %></a>
+					<a href="$Products.NextLink"><%t Pagination.NEXT "Next" %></a>
 				</li>
 			<% end_if %>
 		</ul>

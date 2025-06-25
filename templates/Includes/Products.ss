@@ -32,7 +32,7 @@
 <% else %>
 
 	<div class="alert alert-info">
-		<% _t('Products.NONE_TO_DISPLAY','Sorry, there are no products to display in this category. We will be adding more products shortly, come back soon!') %>
+		<%t Products.NONE_TO_DISPLAY "Sorry, there are no products to display in this category. We will be adding more products shortly, come back soon!" %>
 	</div>
 
 <% end_if %>
